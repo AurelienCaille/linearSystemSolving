@@ -96,6 +96,8 @@ if __name__ == "__main__":
     d = Rational(3, 3)
     e = Rational(4, 13)
 
+    assert(a.add(b) == Rational(7, 3))
+
     print (a.add(b))
     
         

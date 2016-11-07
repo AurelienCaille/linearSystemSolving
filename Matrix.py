@@ -5,6 +5,7 @@ class Matrix:
         """create an empty matrix
         """
         self.matrix = matrix
+        
     def multiply(self, matrix):
         """definit le protuit matriciel
         """

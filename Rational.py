@@ -85,10 +85,14 @@ class Rational:
         Simplify the current rational
         """
 
-        gcd_simple = gcd(self.numerator, self.denominator)
+        if self.numerator == 0:
+            self.denominator = 1
 
-        self.numerator /= gcd_simple
-        self.denominator /= gcd_simple
+        elif:
+            gcd_simple = gcd(self.numerator, self.denominator)
+
+            self.numerator /= gcd_simple
+            self.denominator /= gcd_simple
 
     def __repr__(self):
 

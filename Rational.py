@@ -75,7 +75,10 @@ class Rational:
         Divided the current rational by another
         """
 
-        return self.multiply(rational2.reverse()).simplify()
+        result = self.multiply(rational2.reverse())
+        result.simplify()
+        
+        return result
 
     def simplify(self):
         """
@@ -101,10 +104,10 @@ class Rational:
     def __mul__(self, rational): # *
         return self.multiply(rational)
 
-    def __tuediv__(self, rational): # /
+    def __truediv__(self, rational): # /
         return self.divided(rational)
 
-    def __iadd__(self, rational):
+    def __iadd__(self, rational): # +=
         return self.add(rational)
 
         

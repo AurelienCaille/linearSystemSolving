@@ -1,3 +1,4 @@
+from Rational import Rational
 class Matrix:
     """Classe definissant les elements matriciels
     """
@@ -14,22 +15,24 @@ class Matrix:
         for i in range(len(matrix.matrix)):
             line = []
             for j in range(len(matrix.matrix)):
-                somme = 0
+                somme = Rational(0)
                 for k in range(len(matrix.matrix)):
                     somme += self.matrix[i][k] * matrix.matrix[k][j]
                 line.append(somme)
             result.append(line)
         return Matrix(result)
     
+    def __mul__(self, matrix):
+        return self.multiply(matrix)
     
-    def __getattr__(self, number):
+    def __getitem__(self, number):
         return self.matrix[number]
     def __repr__(self):
         result = ""
         for i in range(len(self.matrix)):
             result = result + "( "
             for j in range(len(self.matrix)): 
-                 result = result + str(self.matrix[i][j]) + " "
+                 result = result + str(self.matrix[i][j]) + "\t"
             result = result + ")\n"
         result = result +"-------------"
         return result.strip()

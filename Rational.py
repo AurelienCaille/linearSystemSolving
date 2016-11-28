@@ -37,6 +37,13 @@ class Rational:
 
         return result
 
+    def opposite(self):
+        """
+        Return opposite of this rational
+        """
+
+        return Rational(- self.numerator,  self.denominator)
+
     def add(self, rational2):
         """
         Add the current rational with another and return the result
@@ -51,6 +58,10 @@ class Rational:
         result.simplify()
 
         return result
+
+
+    def substract(self, rational2):
+        return self.add(rational2.opposite())
 
     def reverse(self):
         """

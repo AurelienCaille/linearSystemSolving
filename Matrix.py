@@ -16,11 +16,14 @@ class Matrix:
             for j in range(len(matrix.matrix)):
                 somme = 0
                 for k in range(len(matrix.matrix)):
-                    somme += self.matrix[i][k]*matrix.matrix[k][j]
+                    somme += self.matrix[i][k] * matrix.matrix[k][j]
                 line.append(somme)
             result.append(line)
         return Matrix(result)
     
+    
+    def __getattr__(self, number):
+        return self.matrix[number]
     def __repr__(self):
         result = ""
         for i in range(len(self.matrix)):

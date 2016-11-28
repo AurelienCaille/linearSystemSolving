@@ -101,7 +101,7 @@ class Rational:
     def __mul__(self, rational): # *
         return self.multiply(rational)
 
-    def __tuediv__(self, rational): # /
+    def __truediv__(self, rational): # /
         return self.divided(rational)
 
     def __iadd__(self, rational):

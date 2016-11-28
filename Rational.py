@@ -86,7 +86,7 @@ class Rational:
         """
 
         if self.numerator == 0:
-            self.denominator = 1
+            self.denominator = 1.0
 
         else:
             gcd_simple = gcd(self.numerator, self.denominator)

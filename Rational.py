@@ -17,7 +17,7 @@ class Rational:
     """
     Class representative a rational number with a numerator and a denominator
     """
-    def __init__(self, numerator, denominator):
+    def __init__(self, numerator, denominator = 1):
 
         self.numerator = numerator
         self.denominator = denominator

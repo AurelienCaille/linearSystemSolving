@@ -82,19 +82,19 @@ class Rational:
 
         
     def __add__(self, rational): # +
-        self.add(rational)
+        return self.add(rational)
 
     def __sub__(self, rational): #-
-        self.substract(rational)
+        return self.substract(rational)
 
     def __mul__(self, rational): # *
-        self.multiply(rational)
+        return self.multiply(rational)
 
     def __tuediv__(self, rational): # /
-        self.divided(rational)
+        return self.divided(rational)
 
     def __iadd__(self, rational):
-        self.add(rational)
+        return self.add(rational)
 
         
 

@@ -81,6 +81,22 @@ class Rational:
         return str(self.numerator) + " / " + str(self.denominator)
 
         
+    def __add__(self, rational): # +
+        self.add(rational)
+
+    def __sub__(self, rational): #-
+        self.substract(rational)
+
+    def __mul__(self, rational): # *
+        self.multiply(rational)
+
+    def __tuediv__(self, rational): # /
+        self.divided(rational)
+
+    def __iadd__(self, rational):
+        self.add(rational)
+
+        
 
         
 

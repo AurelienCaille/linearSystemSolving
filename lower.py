@@ -1,11 +1,12 @@
 import Matrix
-from upper import delta
+from Identity import Identity
+from Rational import Rational as R
 
 def lower(matrix):
 #pas fini
     nb_line = len(matrix.matrix)
-    En = Matrix.Matrix([[delta(i, j) for i in range(nb_line)]
-                                    for j in range(nb_line)])
+    An = Identity(nb_line)
+
     for n in range (nb_line - 1): #E_{n-1} ... E_{1}
         
         #Create empty matrix
@@ -17,14 +18,14 @@ def lower(matrix):
         for column in range (nb_line):
             for line in range (nb_line):
                 if column == line: #in the diagonal
-                    E[line].append(1)
+                    E[line].append(R(1))
                     continue
                 else :
                     if n == column and column>line:
                         E[line].append( An[line][column] / An[n][n])
                         continue
                         
-                E[line].append(0)
+                E[line].append(R(0))
                 
                                     
         E = Matrix.Matrix(E)
@@ -34,6 +35,11 @@ def lower(matrix):
     return En
 
 
-if __name__ == "__main__" :
-    pass
+if __name__ == "__main__":
+    A = Matrix.Matrix([[R(2),    R(3),   R(3), R(1)],
+                       [R(-1),   R(1),   R(1), R(1)],
+                       [R(-4),   R(-6),  R(3), R(2)],
+                       [R(-2),   R(-1),  R(1), R(1)]])
+    An = lower(A)
+    print (An)
 

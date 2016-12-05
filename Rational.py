@@ -1,16 +1,14 @@
-def gcd( integer1, integer2):
+def gcd(integer_1, integer_2):
     """
     Return the value of the gcd between the integer: integer1 and integer2
     """
 
     gcd = 1
 
-    for i in range(int(min(integer1, integer2)), 1, -1):
-        if integer1 % i == 0 and integer2 % i == 0:
+    for i in range(int(min(integer_1, integer_2)), 1, -1):
+        if integer_1 % i == 0 and integer_2 % i == 0:
             gcd = i
             break
-        
-
     return gcd
 
 class Rational:
@@ -59,7 +57,6 @@ class Rational:
 
         return result
 
-
     def substract(self, rational2):
         return self.add(rational2.opposite())
 
@@ -98,7 +95,6 @@ class Rational:
 
         return str(self.numerator) + " / " + str(self.denominator)
 
-        
     def __add__(self, rational): # +
         return self.add(rational)
 

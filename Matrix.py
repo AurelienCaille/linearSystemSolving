@@ -1,7 +1,8 @@
 from Rational import Rational
+
 class Matrix:
-    """Classe definissant les elements matriciels
-    """
+    """ Classe definissant les elements matriciels """
+    
     def __init__(self, matrix):
         """create an empty matrix
         """
@@ -10,6 +11,7 @@ class Matrix:
     def multiply(self, matrix):
         
         """definit le protuit matriciel
+        no change to the initial Matrix
         """
         result = []
         for i in range(len(matrix.matrix)):
@@ -27,6 +29,7 @@ class Matrix:
     
     def __getitem__(self, number):
         return self.matrix[number]
+        
     def __repr__(self):
         result = ""
         for i in range(len(self.matrix)):

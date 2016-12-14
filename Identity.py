@@ -14,7 +14,7 @@ class Identity(Matrix):
             for j in range(size):
                 
                 if i == j:
-                    self.matrix[i].append(R(1))
+                    self.matrix[i].append(R(1.))
                 else:
                     self.matrix[i].append(R(0.))
 

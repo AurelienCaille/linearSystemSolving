@@ -5,8 +5,8 @@ def gcd(integer_1, integer_2):
 
     gcd = 1
 
-    for i in range(int(min(integer_1, integer_2)), 1, -1):
-        if integer_1 % i == 0 and integer_2 % i == 0:
+    for i in range(int(min(integer_1, integer_2)), 1., -1.):
+        if integer_1 % i == 0. and integer_2 % i == 0.:
             gcd = i
             break
     return gcd
@@ -15,10 +15,10 @@ class Rational:
     """
     Class representative a rational number with a numerator and a denominator
     """
-    def __init__(self, numerator, denominator = 1):
+    def __init__(self, numerator, denominator = 1.):
 
-        self.numerator = numerator
-        self.denominator = denominator
+        self.numerator = float(numerator)
+        self.denominator = float(denominator)
 
         self.simplify()
 

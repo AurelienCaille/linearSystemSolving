@@ -19,14 +19,14 @@ def upper(matrix):
         for column in range (nb_line):
             for line in range (nb_line):
                 if column == line:
-                    E[line].append(R(1))
+                    E[line].append(R(1.))
                     continue
                 else :
                     if n == column and column < line:
-                        E[line].append((R(0) - An[line][column]) / An[n][n])
+                        E[line].append((R(0.) - An[line][column]) / An[n][n])
                         continue
                         
-                E[line].append(R(0))
+                E[line].append(R(0.))
                 
                                     
         E = Matrix.Matrix(E)

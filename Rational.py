@@ -7,7 +7,7 @@ def gcd(integer_1, integer_2):
 
     for i in range(int(min(integer_1, integer_2)), 1, -1):
         if integer_1 % i == 0 and integer_2 % i == 0:
-            gcd = float(i)
+            gcd = i
             break
     return gcd
 
@@ -15,10 +15,10 @@ class Rational:
     """
     Class representative a rational number with a numerator and a denominator
     """
-    def __init__(self, numerator, denominator = 1.):
+    def __init__(self, numerator, denominator = 1):
 
-        self.numerator = float(numerator)
-        self.denominator = float(denominator)
+        self.numerator = numerator
+        self.denominator = denominator
 
         self.simplify()
 
@@ -83,7 +83,7 @@ class Rational:
         """
 
         if self.numerator == 0:
-            self.denominator = 1.0
+            self.denominator = 1
 
         else:
             gcd_simple = gcd(self.numerator, self.denominator)
@@ -93,8 +93,7 @@ class Rational:
 
     def __repr__(self):
 
-        return str(self.numerator) + " / " + str(self.denominator)
-
+        return str(self.numerator / self.denominator)
     def __add__(self, rational): # +
         return self.add(rational)
 
@@ -126,9 +125,6 @@ if __name__ == "__main__":
     d = Rational(3, 3)
     e = Rational(4, 13)
 
-    assert(a.add(b) == Rational(7, 3))
-
-    print (a.add(b))
     
         
 

@@ -5,9 +5,9 @@ def gcd(integer_1, integer_2):
 
     gcd = 1
 
-    for i in range(int(min(integer_1, integer_2)), 1., -1.):
-        if integer_1 % i == 0. and integer_2 % i == 0.:
-            gcd = i
+    for i in range(int(min(integer_1, integer_2)), 1, -1):
+        if integer_1 % i == 0 and integer_2 % i == 0:
+            gcd = float(i)
             break
     return gcd
 

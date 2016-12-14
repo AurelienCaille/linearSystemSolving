@@ -11,6 +11,7 @@ def lower(matrix):
         
         #Create empty matrix
         E = []
+        En = Identity(nb_line)
         for i in range(nb_line):
             E.append([])
         

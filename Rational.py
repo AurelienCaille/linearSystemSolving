@@ -94,6 +94,7 @@ class Rational:
     def __repr__(self):
 
         return str(self.numerator / self.denominator)
+        
     def __add__(self, rational): # +
         return self.add(rational)
 
@@ -108,6 +109,12 @@ class Rational:
 
     def __iadd__(self, rational): # +=
         return self.add(rational)
+        
+    def __ne__(self, rational): # !=
+        if self.numerator != rational.numerator or \
+        self.denominator != rational.denominator:
+            return True
+        return False
 
         
 

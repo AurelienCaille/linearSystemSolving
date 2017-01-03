@@ -41,6 +41,20 @@ if __name__ == "__main__":
                        [R(-1),   R(1),   R(1), R(1)],
                        [R(-4),   R(-6),  R(3), R(2)],
                        [R(-2),   R(-1),  R(1), R(1)]])
+                       
+    
     An = lower(A)
     print (An)
-
+    """
+    Lower = Matrix.Matrix([[R(1),    R(0),   R(0), R(0)],
+                           [R(-1, 2),   R(1),   R(0), R(0)],
+                           [R(-2),   R(0),  R(1), R(0)],
+                           [R(-1),   R(4, 5),  R(2, 9), R(1)]])
+    print(Lower)
+    Upper = Matrix.Matrix([[R(2),    R(3),   R(3), R(1)],
+                       [R(0),   R(5, 2),   R(5, 2), R(3, 2)],
+                       [R(0),   R(0),  R(9), R(4)],
+                       [R(0),   R(0),  R(0), R(-4, 45)]])
+    print(Upper)
+    print(Lower * Upper)
+    """

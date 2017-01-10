@@ -93,7 +93,7 @@ class Rational:
 
     def __repr__(self):
 
-        return str(self.numerator / self.denominator)
+        return str(float(self.numerator) / self.denominator)
         
     def __add__(self, rational): # +
         return self.add(rational)

@@ -25,6 +25,9 @@ class Matrix:
         return Matrix(result)
         
     def reverse_diag(self):
+        """
+        Test if a matrix is diagonal and reverse it
+        """
         result = []
         for i in range(len(self.matrix)):
             line = []

@@ -97,3 +97,14 @@ if __name__ == "__main__":
     A = Matrix(A)
     print(A.reverse_diag())
     
+    A = Matrix([[R(2),    R(3),   R(3), R(1)],
+                  [R(-1),   R(1),   R(1), R(1)],
+                  [R(-4),   R(-6),  R(3), R(2)],
+                  [R(-2),   R(-1),  R(1), R(1)]])
+
+    B = Matrix([ [R(21)], 
+                    [R(8)],
+                    [R(1)],
+                    [R(3)]])
+    print(A*B)
+    

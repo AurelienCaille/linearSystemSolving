@@ -4,7 +4,7 @@ def gcd(integer_1, integer_2):
     """
 
     gcd = 1
-
+    integer_1, integer_2 = abs(integer_1), abs(integer_2)
     for i in range(int(min(integer_1, integer_2)), 1, -1):
         if integer_1 % i == 0 and integer_2 % i == 0:
             gcd = i
@@ -81,7 +81,8 @@ class Rational:
 
         if self.numerator == 0:
             self.denominator = 1
-
+        if self.numerator < 0 and self.denominator < 0:
+            self.numerator, self.denominator  = -self.numerator, -self.denominator
         else:
             gcd_simple = gcd(self.numerator, self.denominator)
 
@@ -90,7 +91,7 @@ class Rational:
 
     def __repr__(self):
 
-        return str(self.numerator) + "/" + str(self.denominator)
+        return str(self.numerator/self.denominator)
         
     def __add__(self, rational): # +
         return self.add(rational)
@@ -128,6 +129,9 @@ if __name__ == "__main__":
     c = Rational(7, 3)
     d = Rational(3, 3)
     e = Rational(4, 13)
+    
+    a = Rational(-720, -180)
+    print(a)
 
     
         

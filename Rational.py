@@ -17,11 +17,9 @@ class Rational:
     """
     def __init__(self, numerator, denominator = 1):
 
-        self.numerator = numerator
-        self.denominator = denominator
-
+        self.numerator = int(numerator)
+        self.denominator = int(denominator)
         self.simplify()
-
     def multiply (self, rational2):
         """
         Multiply the current rational with another and return the result
@@ -74,7 +72,6 @@ class Rational:
 
         result = self.multiply(rational2.reverse())
         result.simplify()
-        #print(result)
         return result
 
     def simplify(self):
@@ -88,12 +85,12 @@ class Rational:
         else:
             gcd_simple = gcd(self.numerator, self.denominator)
 
-            self.numerator /= gcd_simple
-            self.denominator /= gcd_simple
+            self.numerator //= gcd_simple
+            self.denominator //= gcd_simple
 
     def __repr__(self):
 
-        return str(float(self.numerator) / self.denominator)
+        return str(self.numerator) + "/" + str(self.denominator)
         
     def __add__(self, rational): # +
         return self.add(rational)

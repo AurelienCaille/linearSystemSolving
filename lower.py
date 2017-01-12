@@ -23,35 +23,27 @@ def lower(matrix):
                     
                 elif k == column and column < line:
                     E[line].append( matrix[line][k] / matrix[k][k])
-                    print(line,\
-                        column,\
-                        matrix[line][k] / matrix[k][k], \
-                        Lower[line][column])
                 else:
                     E[line].append(R(0))
         E = Matrix.Matrix(E)
-        En = E * En  
-        
+        En =  En  * E
+        #---------------------
+        #multiply matrix by E
         #---------------------
         E = E.matrix
-        for i in range(nb_line):
-            E.append([])
         
         #Create E_{n}^{-1} matrix
         for column in range (nb_line):
             for line in range (nb_line):
                 if column == line: #in the diagonal
-                    E[line].append(R(1))
-                    
-                elif k == column and column < line:
-                    E[line].append(R(0) - matrix[line][k] / matrix[k][k])
+                    pass
                 else:
-                    E[line].append(R(0))      
+                    E[column][line] = R(0)-E[column][line]
         #AFAIRE ! matrix deviens matrix * E_{n}  
         E = Matrix.Matrix(E)
         matrix = E * matrix
         #-------------------------
-        print("En :\n", En)
+
     return En
 
 

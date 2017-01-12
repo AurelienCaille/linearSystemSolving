@@ -74,7 +74,7 @@ class Rational:
 
         result = self.multiply(rational2.reverse())
         result.simplify()
-        
+        #print(result)
         return result
 
     def simplify(self):

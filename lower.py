@@ -1,17 +1,17 @@
 import Matrix
 from Identity import Identity
 from Rational import Rational as R
-
+Lower = Matrix.Matrix([[R(1),       R(0),     R(0),     R(0)],
+                           [R(-1, 2),   R(1),     R(0),     R(0)],
+                           [R(-2),      R(0),     R(1),     R(0)],
+                           [R(-1),      R(4, 5),  R(2, 9),  R(1)]])
 def lower(matrix):
 #pas fini
     nb_line = len(matrix.matrix)
-    An = Identity(nb_line)
-
-    for n in range (nb_line - 1): #E_{n-1} ... E_{1}
-        
+    En = Identity(nb_line)
+    for k in range (nb_line - 1): #E_{n-1} ... E_{1}
         #Create empty matrix
         E = []
-        En = Identity(nb_line)
         for i in range(nb_line):
             E.append([])
         
@@ -20,19 +20,38 @@ def lower(matrix):
             for line in range (nb_line):
                 if column == line: #in the diagonal
                     E[line].append(R(1))
-                    continue
-                else :
-                    if n == column and column>line:
-                        E[line].append( An[line][column] / An[n][n])
-                        continue
-                        
-                E[line].append(R(0))
-                
-                                    
+                    
+                elif k == column and column < line:
+                    E[line].append( matrix[line][k] / matrix[k][k])
+                    print(line,\
+                        column,\
+                        matrix[line][k] / matrix[k][k], \
+                        Lower[line][column])
+                else:
+                    E[line].append(R(0))
         E = Matrix.Matrix(E)
-        En = E.multiply(En)
-        print(E)
-        print(En)
+        En = E * En  
+        
+        #---------------------
+        E = E.matrix
+        for i in range(nb_line):
+            E.append([])
+        
+        #Create E_{n}^{-1} matrix
+        for column in range (nb_line):
+            for line in range (nb_line):
+                if column == line: #in the diagonal
+                    E[line].append(R(1))
+                    
+                elif k == column and column < line:
+                    E[line].append(R(0) - matrix[line][k] / matrix[k][k])
+                else:
+                    E[line].append(R(0))      
+        #AFAIRE ! matrix deviens matrix * E_{n}  
+        E = Matrix.Matrix(E)
+        matrix = E * matrix
+        #-------------------------
+        print("En :\n", En)
     return En
 
 
@@ -43,18 +62,19 @@ if __name__ == "__main__":
                        [R(-2),   R(-1),  R(1), R(1)]])
                        
     
+    Lower = Matrix.Matrix([[R(1),       R(0),     R(0),     R(0)],
+                           [R(-1, 2),   R(1),     R(0),     R(0)],
+                           [R(-2),      R(0),     R(1),     R(0)],
+                           [R(-1),      R(4, 5),  R(2, 9),  R(1)]])
     An = lower(A)
     print (An)
-    """
-    Lower = Matrix.Matrix([[R(1),    R(0),   R(0), R(0)],
-                           [R(-1, 2),   R(1),   R(0), R(0)],
-                           [R(-2),   R(0),  R(1), R(0)],
-                           [R(-1),   R(4, 5),  R(2, 9), R(1)]])
-    print(Lower)
-    Upper = Matrix.Matrix([[R(2),    R(3),   R(3), R(1)],
-                       [R(0),   R(5, 2),   R(5, 2), R(3, 2)],
-                       [R(0),   R(0),  R(9), R(4)],
-                       [R(0),   R(0),  R(0), R(-4, 45)]])
-    print(Upper)
-    print(Lower * Upper)
-    """
+    
+
+    #print(Lower)
+    Upper = Matrix.Matrix([ [R(2),      R(3),       R(3),       R(1)],
+                            [R(0),      R(5, 2),    R(5, 2),    R(3, 2)],
+                            [R(0),      R(0),       R(9),       R(4)],
+                            [R(0),      R(0),       R(0),       R(-4, 45)]])
+    #print(Upper)
+    #print(Lower * Upper)
+    

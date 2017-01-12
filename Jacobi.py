@@ -30,6 +30,10 @@ def Jacobi(matrix, targeted_vect, iteration = 5):
 
 
     for i in range(iteration):
+        print("iteration", i)
+        print("xk", X_k)
+        print("a", (Id - inv_diag * matrix) )
+        print(("aa", (Id - inv_diag * matrix) * X_k))
         X_k = ((Id - inv_diag * matrix) * X_k) + (inv_diag * target)
         # (I - D^-1 * A) * X_k + D^-1 * Y
         #erreur potentielle de calcul, ou systeme insolvable.
@@ -43,5 +47,15 @@ if __name__ == "__main__":
     target = Matrix.Matrix([        [R(1)], 
                                     [R(2)]])
     print(Jacobi(A, target, 100))
-    
+
+
+    B = Matrix.Matrix([[R(2), R(3), R(3), R(1)],
+                       [R(-4), R(-6), R(3), R(2)],
+                       [R(-1), R(1), R(1), R(1)],
+                       [R(-2), R(-1), R(1), R(1)]])
+    target = Matrix.Matrix([[R(15)],
+                            [R(3)],
+                            [R(5)],
+                            [R(1)]])
+    print(Jacobi(B, target, 6))
     

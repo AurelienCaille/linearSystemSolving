@@ -38,29 +38,17 @@ Y = Matrix.Matrix(Y)
 
 
 print(Y, "\n")
-
+print(U)
 
 X = []
 for yindex in range(len(Y.matrix)-1, -1, -1):
-    print("yindex :", yindex, ":", Y[yindex][0])
     
     y = Y[yindex][0]
     x = y/U[yindex][yindex]
-    print("x : ", x)
     
-    for i in range(len(X)-1, -1, -1):
-        print((U[yindex][i] * X[i][0])/U[yindex][yindex])
-        
-        x = x - (U[yindex][i] * X[i][0])/U[yindex][yindex]
-        print(i, ":", x)
-        
-    print()
-    
+    for i in range(len(X)):
+        x = x - (U[yindex][-i-1] * X[i][0]) / U[yindex][yindex]
     X.append([x])
 X.reverse()
 X = Matrix.Matrix(X)
-
-print(A*B)
-print("oui")
-BB = A * X
 print(X)

@@ -43,7 +43,7 @@ class Matrix:
         return Matrix(result)
 
     def lower(self):
-        matrix = self.matrix
+        matrix = self
         nb_line = len(matrix.matrix)
         En = Identity(nb_line)
         for k in range (nb_line - 1): #E_{n-1} ... E_{1}
@@ -62,7 +62,7 @@ class Matrix:
                         E[line].append( matrix[line][k] / matrix[k][k])
                     else:
                         E[line].append(R(0))
-            E = Matrix.Matrix(E)
+            E = Matrix(E)
             En =  En  * E
             #---------------------
             #multiply matrix by E
@@ -77,7 +77,7 @@ class Matrix:
                     else:
                         E[column][line] = R(0)-E[column][line]
             #AFAIRE ! matrix deviens matrix * E_{n}  
-            E = Matrix.Matrix(E)
+            E = Matrix(E)
             matrix = E * matrix
             #-------------------------
 
@@ -87,7 +87,7 @@ class Matrix:
         """
         return the upper matrix of a matrix
         """
-        matrix = self.matrix
+        matrix = self
         nb_line = len(matrix.matrix)
         An = matrix
         
@@ -112,7 +112,7 @@ class Matrix:
                     E[line].append(R(0))
                     
                                         
-            E = Matrix.Matrix(E)
+            E = Matrix(E)
             
             An = E * An
         return An
@@ -153,7 +153,27 @@ class Matrix:
             result = result + ")\n"
         result = result +"-------------"
         return result.strip()
+
+
+
+
+class Identity(Matrix):
+    def __init__(self, size):
+        """
+        return 1 if i == j
+        return 0 if i != j
+        """
+        self.matrix = []
+        for i in range(size):
+            self.matrix.append([])
+            for j in range(size):
                 
+                if i == j:
+                    self.matrix[i].append(R(1.))
+                else:
+                    self.matrix[i].append(R(0.))
+
+
 if __name__ == "__main__":
     A = [[R(1), R(2), R(3)],
          [R(3), R(4), R(5)],

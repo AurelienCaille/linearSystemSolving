@@ -41,6 +41,81 @@ class Matrix:
                     raise ValueError("matrix isn't diagonal")
             result.append(line)
         return Matrix(result)
+
+    def lower(self):
+        matrix = self.matrix
+        nb_line = len(matrix.matrix)
+        En = Identity(nb_line)
+        for k in range (nb_line - 1): #E_{n-1} ... E_{1}
+            #Create empty matrix
+            E = []
+            for i in range(nb_line):
+                E.append([])
+            
+            #Create E_{n}^{-1} matrix
+            for column in range (nb_line):
+                for line in range (nb_line):
+                    if column == line: #in the diagonal
+                        E[line].append(R(1))
+                        
+                    elif k == column and column < line:
+                        E[line].append( matrix[line][k] / matrix[k][k])
+                    else:
+                        E[line].append(R(0))
+            E = Matrix.Matrix(E)
+            En =  En  * E
+            #---------------------
+            #multiply matrix by E
+            #---------------------
+            E = E.matrix
+            
+            #Create E_{n}^{-1} matrix
+            for column in range (nb_line):
+                for line in range (nb_line):
+                    if column == line: #in the diagonal
+                        pass
+                    else:
+                        E[column][line] = R(0)-E[column][line]
+            #AFAIRE ! matrix deviens matrix * E_{n}  
+            E = Matrix.Matrix(E)
+            matrix = E * matrix
+            #-------------------------
+
+        return En
+
+    def upper(self):
+        """
+        return the upper matrix of a matrix
+        """
+        matrix = self.matrix
+        nb_line = len(matrix.matrix)
+        An = matrix
+        
+        for n in range (nb_line-1): # E_{n-1} * ... * E_{1} * A, so nb_line-1
+            
+            #create empty matrix
+            E = []
+            for i in range(nb_line):
+                E.append([])
+                
+            #create E_{n} matrix
+            for column in range (nb_line):
+                for line in range (nb_line):
+                    if column == line:
+                        E[line].append(R(1))
+                        continue
+                    else :
+                        if n == column and column < line:
+                            E[line].append((R(0) - An[line][column]) / An[n][n])
+                            continue
+                            
+                    E[line].append(R(0))
+                    
+                                        
+            E = Matrix.Matrix(E)
+            
+            An = E * An
+        return An
     
     def __mul__(self, matrix):
         return self.multiply(matrix)

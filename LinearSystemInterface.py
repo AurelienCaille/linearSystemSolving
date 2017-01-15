@@ -30,7 +30,7 @@ class MatrixInputWidget(QWidget):
 
         self.show()
 
-class VectorInputWidget(QWidget)
+class VectorInputWidget(QWidget):
     """Widget to enter a column vector"""
 
     def __init__(self):
@@ -42,11 +42,14 @@ class VectorInputWidget(QWidget)
 
     def initUI(self):
 
-        pass       
+        #Grid for layout
+        grid = QGridLayout()
+        self.setLayout(grid)
+        self.show()     
 
 
         
-class SystemInputWidget(QWidget)
+class SystemInputWidget(QWidget):
     """Widget to enter a linear system"""
 
     def __init__(self):
